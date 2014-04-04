@@ -111,13 +111,9 @@
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
 
-;; オートセーブファイルを作らない
-;(setq auto-save-default nil)
-
-;; オートセーブファイルを~/.emacs.d/backups/へ集める
-;; M-x recover-file RET ~/.emacs.d/backups/hoge.hoge RET でバッファが復元される
+;; オートセーブファイルの作成場所を/tmpに変更
 (setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+      `((".*" ,temporary-file-directory t)))
 
 ;; オートセーブファイル作成までの時間とタイプ間隔
 (setq auto-save-timeout 15)

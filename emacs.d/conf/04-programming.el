@@ -172,6 +172,7 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
 
 ;; ruby-insert-endがないよっっていうエラーへの対応
 (defun ruby-insert-end ()
@@ -195,6 +196,10 @@
 ;; (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
 ;; (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+
+;; マジックコメントの自動挿入を無効化
+(custom-set-variables
+  '(ruby-insert-encoding-magic-comment nil))
 
 
 

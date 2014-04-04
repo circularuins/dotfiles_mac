@@ -60,7 +60,7 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとサブディレクトリをload-pathに追加
-(add-to-load-path "elisp" "conf" "public_repos" "package")
+(add-to-load-path "elisp" "conf" "package")
 
 
 

@@ -3,6 +3,7 @@
 *~
 /*
 
+
 # Except
 !/init.el
 !/init.elc
@@ -12,6 +13,4 @@
 !/template
 !/doc
 !/themes
-!/public_repos/.gitkeep
-!/backups/.gitkeep
 !/.gitignore
