@@ -1,7 +1,7 @@
 # ~/.tmuxinator/default.yml
 
-name: d3
-root: ~/study/js/d3_test
+name: ansible
+root: ~/study/vm/test_20140403
 
 # Optional tmux socket
 # socket_name: foo
@@ -20,6 +20,5 @@ root: ~/study/js/d3_test
 
 windows:
   - editor: /usr/local/Cellar/emacs/24.3/bin/emacs
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
-  - test: bundle exec rspec spec/requests/static_pages_spec.rb
+  - test: rake spec
+  - ansible: ansible-playbook hoge.yml -i hosts -c paramiko -k -vvvv
