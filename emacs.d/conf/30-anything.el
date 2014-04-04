@@ -1,7 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; anything関連の設定 ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ; packageでインストール
 ;; 基本設定
 (require 'anything)
@@ -71,12 +67,24 @@
       (with-current-buffer anything-current-buffer
         (insert candidate))))))
 
+;; ;; anything-for-document用のソースを定義
+;; ;; M-x anything-for-documentでドキュメントを串刺し検索
+;; (require 'anything)
+;; (setq anything-for-document-sources
+;;       (list anything-c-source-man-pages
+;;             anything-c-source-info-cl
+;;             anything-c-source-info-pages
+;;             anything-c-source-info-elisp
+;; ;            anything-c-source-info-emacs
+;; ;            anything-c-source-emacs-commands
+;;             anything-c-source-emacs-functions
+;;             anything-c-source-emacs-variables))
 
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;
-;;; helm関連の設定 ;;;
-;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'helm-config)
+;; ;; anything-for-documentコマンドを作成
+;; (defun anything-for-document ()
+;;   "Preconfigured `anything' for anything-for-document."
+;;   (interactive)
+;;   (anything anything-for-document-sources
+;;  ;           (thing-at-point 'symbol) nil nil nil
+;;             nil nil nil nil
+;;             "*anything for document*"))
