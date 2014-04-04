@@ -8,7 +8,7 @@
       (t
        (require 'color-theme)
        (color-theme-initialize)
-       (color-theme-arjen)
+;       (color-theme-arjen)
 ;       (color-theme-euphoria)
-;       (color-theme-clarity)
+       (color-theme-clarity)
        ))

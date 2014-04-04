@@ -51,13 +51,13 @@
 (defface hlline-face
   '((((class color)
       (background dark))
-     (:background "dark slate gray"))
+     (:background "gray0"))
     (((class color)
       (background light))
-     (:background  "#98FB98"))
+     (:background "SeaGreen" :))
     (t
      ()))
-  "*Face used by hl-line.")
+  "Used face hl-line.")
 (setq hl-line-face 'hlline-face)
 (global-hl-line-mode)
 
