@@ -100,3 +100,10 @@
 ;;; カーソル位置を戻す
 (define-key global-map (kbd "<f7>") 'point-undo)
 (define-key global-map (kbd "S-<f7>") 'point-redo)
+
+;;; swoop
+(global-set-key (kbd "C-o")   'swoop)
+(global-set-key (kbd "C-M-o") 'swoop-multi)
+(global-set-key (kbd "M-o")   'swoop-pcre-regexp)
+(global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)
+;(global-set-key (kbd "H-6")   'swoop-migemo) ;; Option for Japanese match
