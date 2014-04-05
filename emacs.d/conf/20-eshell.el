@@ -1,25 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ミニバッファでshellコマンド ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; "M-!"でカレントバッファの存在するディレクトリでコマンドを実行し、*Shell Command Output*バッファに出力する。
-;; "C-u M-! コマンド"で、カレントバッファに出力する。
-
-;; バッファ上のテキストをコマンドの標準入力に利用する
-;; リージョン選択後、"C-u M-| コマンド"で、リージョンが出力で置換される
-;; 例：C-u M-| grep "hoge" RET
-
-
-
-
-
-;;;;;;;;;;;;;;
-;;; Eshell ;;;
-;;;;;;;;;;;;;;
-
-;; Emacs 起動時に Eshell を起動
-;;(add-hook 'after-init-hook (lambda () (eshell) ))
-
 ;; 起動時のウェルカムメッセージ
 (setq eshell-banner-message "\n\nHello Eshell, Goodbye\n\n\n")
 
@@ -82,58 +60,6 @@
   (let ((pcomplete-help "complete after sudo"))
     (pcomplete-here (pcomplete-here (eshell-complete-commands-list)))))
 
-;; ;; eshell での補完に auto-complete.el を使う
-;; (require 'pcomplete)
-;; (require 'auto-complete)
-;; (add-to-list 'ac-modes 'eshell-mode)
-;; (ac-define-source pcomplete
-;;   '((candidates . pcomplete-completions)))
-;; (defun my-ac-eshell-mode ()
-;;   (setq ac-sources
-;;         '(ac-source-pcomplete
-;;           ac-source-words-in-buffer
-;;           ac-source-dictionary)))
-;; (add-hook 'eshell-mode-hook
-;;           (lambda ()
-;;             (my-ac-eshell-mode)
-;;             (define-key eshell-mode-map (kbd "C-i") 'auto-complete)))
-
-;; Unixコマンドエミュレーションを無効にする
-(progn
- (defmacro eval-after-load* (name &rest body)
-   (declare (indent 1))
-   `(eval-after-load ,name '(progn ,@body)))
- (defun eshell-disable-unix-command-emulation ()
-   ;; (eval-after-load* "em-ls"
-   ;;   (fmakunbound 'eshell/ls))
-   (eval-after-load* "em-unix"
-     (mapc 'fmakunbound '(eshell/agrep
-                          eshell/basename
-                          eshell/cat
-                          eshell/cp
-                          eshell/date
-                          eshell/diff
-                          eshell/dirname
-                          eshell/du
-                          eshell/egrep
-                          eshell/fgrep
-                          eshell/glimpse
-                          eshell/grep
-                          eshell/info
-                          eshell/ln
-                          eshell/locate
-                          eshell/make
-                          eshell/man
-                          eshell/mkdir
-                          eshell/mv
-                          eshell/occur
-                          eshell/rm
-                          eshell/rmdir
-                          eshell/su
-                          eshell/sudo
-                          eshell/time))))
- (eshell-disable-unix-command-emulation))
-
 ;; シェルらしい挙動にする
 (progn
  (defun eshell-in-command-line-p ()
@@ -185,14 +111,7 @@
 (defun eshell-parser/z (str) (eshell-parser/b str "zsh"))
 
 
-
-
-
-;;;;;;;;;;;;;;;;;;;
-;;; Shell Utils ;;;
-;;;;;;;;;;;;;;;;;;;
-
-;; 選択範囲に対してPerlコマンドを実行する関数
+;; 選択範囲に対してPerlコマンドを実行
 (defun perl-eval (beg end)
   (interactive "r")
   (save-excursion

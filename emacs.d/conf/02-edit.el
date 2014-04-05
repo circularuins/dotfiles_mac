@@ -153,7 +153,7 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; 現在カーソル位置のファイル・URLを開く
-(ffap-bindings)
+;(ffap-bindings)
 
 
 

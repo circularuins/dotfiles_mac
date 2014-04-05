@@ -1,24 +1,16 @@
-;;; 汽車ぽっぽ
-; M-x install-elisp-from-emacswiki sl.el
-(require 'sl)
+;; 遅延ロードマクロ定義
+;; (lazyload (triger-function　...) "filename" &rest body)
+(defmacro lazyload (func lib &rest body)
+  `(when (locate-library ,lib)
+     ,@(mapcar (lambda (f) `(autoload ',f ,lib nil t)) func)
+     (eval-after-load ,lib
+       '(progn
+          ,@body)) t))
 
-;;; 英和・和英
-; M-x install-elisp-from-emacswiki text-translator.el
-(require 'text-translator)
-(setq text-translator-auto-selection-func
-     'text-translator-translate-by-auto-selection-enja)
-
-;; Nyanmode (*^o^*)
-; packageでインストール
-(when window-system
-  (require 'nyan-mode)
-  (nyan-mode t)
-  (nyan-start-animation)
-  (add-hook 'eshell-load-hook 'nyan-prompt-enable))
-
-;;; zo～～ne
-(require 'zone)
-;(zone-when-idle 300)
+(lazyload (zone)
+          "zone"
+          (require 'zone)
+;          (zone-when-idle 300)
 
 (defun zone-choose (pgm)
     "Choose a PGM to run for `zone'."
@@ -52,3 +44,6 @@
             (setq prev-md5 next-md5))
           (forward-line 1)
           (zone-park/sit-for (point-min) 0.1)))))
+
+          )
+

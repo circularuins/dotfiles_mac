@@ -1,48 +1,31 @@
-;;;;;;;;;;;;;;;;;;;;;;
-;;; 環境変数の設定 ;;;
-;;;;;;;;;;;;;;;;;;;;;;
+;; 遅延ロードマクロ定義
+;; (lazyload (triger-function　...) "filename" &rest body)
+(defmacro lazyload (func lib &rest body)
+  `(when (locate-library ,lib)
+     ,@(mapcar (lambda (f) `(autoload ',f ,lib nil t)) func)
+     (eval-after-load ,lib
+       '(progn
+          ,@body)) t))
 
-;; MacのEmacs.app用の設定
-(when (eq system-type 'darwin)
-  (setenv "PATH" (concat (expand-file-name "/usr/local/bin/:") (getenv "PATH")))
-  (setenv "PATH" (concat (expand-file-name "/Users/wake/.plenv/versions/5.18.1/bin/:") (getenv "PATH")))
-  (setq eshell-path-env (getenv "PATH")))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; パフォーマンスチェック ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; 総起動時間の計測
+(add-hook 'after-init-hook
+  (lambda ()
+    (message "@@@@@@@@@@ init time: %.3f sec @@@@@@@@@@"
+             (float-time (time-subtract after-init-time before-init-time)))))
 
-
-
-
-;;;;;;;;;;;;;;;;
-;;; 基本設定 ;;;
-;;;;;;;;;;;;;;;;
-
-;; Localeに合わせた環境の設定
-(set-locale-environment nil)
-
-;; 文字コードの指定
-(set-language-environment "Japanese")
-(prefer-coding-system 'utf-8)
-
-;; Macの場合のファイル名の設定
-(when (eq system-type 'darwin)
-  (require 'ucs-normalize)
-  (set-file-name-coding-system 'utf-8-hfs)
-  (setq locale-coding-system 'utf-8-hfs))
-
-;; Windowsの場合のファイル名の設定
-(when (eq window-system 'w32)
-  (set-file-name-coding-system 'cp932)
-  (setq locale-coding-system 'cp932))
-
-;;; MetaキーをAltからCmdへ変更(Macのみ)
-; "Symbol's value as variable is void: warning-suppress-types" というエラーを出さないための設定
-(setq warning-suppress-types nil)
-(when (eq system-type 'darwin)
-  (setq ns-command-modifier (quote meta))
-  (setq ns-alternate-modifier (quote super)))
-
-
-
+;; requireにかかる時間の計測
+(defadvice require (around require-benchmark activate)
+  (let* ((before (current-time))
+         (result ad-do-it)
+         (after  (current-time))
+         (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
+                  (/ (- (nth 2 after) (nth 2 before)) 1000))))
+    (when (> time 50)
+      (message "********** %s: %d msec **********" (ad-get-arg 0) time))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -63,9 +46,6 @@
 (add-to-load-path "elisp" "conf" "package")
 
 
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 拡張インストールのための設定 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,18 +54,25 @@
 
 ; wget http://www.emacswiki.org/emacs/download/auto-install.el
 ; emacs --batch -Q -f batch-byte-compile auto-install.el
-(require 'auto-install)
-(setq auto-install-directory "~/.emacs.d/elisp/")
-(ignore-errors (auto-install-update-emacswiki-package-name t))
-; install-elisp との互換のため
-(auto-install-compatibility-setup)
-; ediff関連のバッファを1つのフレームにまとめる
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; (require 'auto-install)
+;; (setq auto-install-directory "~/.emacs.d/elisp/")
+;; (ignore-errors (auto-install-update-emacswiki-package-name t))
+;; ; install-elisp との互換のため
+;; (auto-install-compatibility-setup)
+;; ; ediff関連のバッファを1つのフレームにまとめる
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(lazyload (auto-install auto-install-from-url auto-install-from-emacswiki)
+          "auto-install"
+          (require 'auto-install)
+          (setq auto-install-directory "~/.emacs.d/elisp/")
+          (ignore-errors (auto-install-update-emacswiki-package-name t))
+          ; install-elisp との互換のため
+          (auto-install-compatibility-setup)
+          ; ediff関連のバッファを1つのフレームにまとめる
+          (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
 ;;; package.el ;;;
 
-; Emacs23の場合（24からは標準でin）
-; (auto-install-from-url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el")
 (require 'package)
 ; リポジトリにMarmaladeと開発者個人のELPAを追加
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
