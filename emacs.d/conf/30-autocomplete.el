@@ -16,5 +16,6 @@
 (add-to-list 'ac-modes 'inferior-scheme-mode)
 (add-to-list 'ac-modes 'inferior-lisp-mode)
 (add-to-list 'ac-modes 'clojure-mode)
+(add-to-list 'ac-modes 'yaml-mode)
 ;; ac-mode
 ;(autoload 'ac-mode "ac-mode" "Minor mode for advanced completion." t nil)

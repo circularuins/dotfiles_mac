@@ -57,13 +57,13 @@
 ;;;anything/helm;;;
 ;;;;;;;;;;;;;;;;;;;
 ;;; anything
-(define-key global-map (kbd "M-x")
-  (lambda ()
-    (interactive)
-    (anything-other-buffer
-     '(anything-c-source-extended-command-history anything-c-source-emacs-commands)
-     "*anything emacs commands*")))
-(define-key global-map (kbd "M-y") 'anything-show-kill-ring)
+;; (define-key global-map (kbd "M-x")
+;;   (lambda ()
+;;     (interactive)
+;;     (anything-other-buffer
+;;      '(anything-c-source-extended-command-history anything-c-source-emacs-commands)
+;;      "*anything emacs commands*")))
+;; (define-key global-map (kbd "M-y") 'anything-show-kill-ring)
 
 ;;; helm
 
@@ -102,8 +102,8 @@
 (define-key global-map (kbd "S-<f7>") 'point-redo)
 
 ;;; swoop
-(global-set-key (kbd "C-o")   'swoop)
+(global-set-key (kbd "M-o")   'swoop)
 (global-set-key (kbd "C-M-o") 'swoop-multi)
-(global-set-key (kbd "M-o")   'swoop-pcre-regexp)
-(global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)
+;(global-set-key (kbd "M-o")   'swoop-pcre-regexp)
+(global-set-key (kbd "M-i") 'swoop-back-to-last-position)
 ;(global-set-key (kbd "H-6")   'swoop-migemo) ;; Option for Japanese match
