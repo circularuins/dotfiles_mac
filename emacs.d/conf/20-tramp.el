@@ -1,2 +1,2 @@
-;; (require 'tramp)
-;; (setq tramp-default-method "ssh")
+(require 'tramp)
+(setq tramp-default-method "ssh")

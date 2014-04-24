@@ -23,3 +23,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # etc
 alias ssh=~/.ssh/ssh-host-color # ssh接続先で色変更
+
+# nvm
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
