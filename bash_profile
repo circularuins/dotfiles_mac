@@ -21,6 +21,10 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
+# leiningen
+export PATH=$HOME/local/bin:$PATH
+if [ ! -d $HOME/local/bin ]; then mkdir -p $HOME/local/bin; fi
+
 # etc
 alias ssh=~/.ssh/ssh-host-color # ssh接続先で色変更
 
