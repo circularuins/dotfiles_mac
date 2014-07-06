@@ -59,7 +59,7 @@
      ()))
   "Used face hl-line.")
 (setq hl-line-face 'hlline-face)
-(global-hl-line-mode)
+;; (global-hl-line-mode)
 
 ;;; #その他 ;;;
 
