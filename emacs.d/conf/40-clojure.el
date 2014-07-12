@@ -1,3 +1,6 @@
+;; 拡張子の追加
+(add-to-list 'auto-mode-alist '("\\.clj_$" . clojure-mode))
+
 ;; nrepl.el後継のCIDER
 (require 'cider)
 (add-hook 'clojure-mode-hook 'cider-mode)
