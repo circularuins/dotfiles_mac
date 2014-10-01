@@ -4,6 +4,6 @@
 ; http://homepage3.nifty.com/satomii/software/jaspace.elayout.el
 (require 'jaspace)
 (setq jaspace-alternate-jaspace-string "□")
-(setq jaspace-alternate-eol-string "↓\n")
+;(setq jaspace-alternate-eol-string "↓\n")
 (setq jaspace-highlight-tabs t)  ; highlight tabs
 ;(setq jaspace-highlight-tabs ?&gt;) ; use ^ as a tab marker

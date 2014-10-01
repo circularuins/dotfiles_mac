@@ -14,5 +14,6 @@
 (add-hook 'nrepl-mode-hook 'enable-paredit-mode)
 (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
 (add-hook 'js2-mode-hook 'enable-paredit-mode)
+(add-hook 'java-mode-hook 'enable-paredit-mode)
 ; カーソルの要素だけを残すのは"M-r"
 ; カーソル直後のS式の選択は"C-M-SPC"
