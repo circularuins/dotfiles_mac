@@ -1,7 +1,9 @@
 ;; eshellaliasの設定
 (require 'em-alias)
-(add-to-list 'eshell-command-aliases-list (list "javac" "javac -J-Dfile.encoding=UTF-8 $1"))
-(add-to-list 'eshell-command-aliases-list (list "java" "java -Dfile.encoding=UTF-8 $1"))
+;; (add-to-list 'eshell-command-aliases-list (list "javac" "javac -J-Dfile.encoding=UTF-8 $1"))
+;; (add-to-list 'eshell-command-aliases-list (list "java" "java -Dfile.encoding=UTF-8 $1"))
+(add-to-list 'eshell-command-aliases-list (list "la" "ls -aF"))
+(add-to-list 'eshell-command-aliases-list (list "ll" "ls -ltr"))
 
 ;; 起動時のウェルカムメッセージ
 (setq eshell-banner-message "\n\nHello Eshell, Goodbye\n\n\n")

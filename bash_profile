@@ -39,5 +39,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 PATH=${JAVA_HOME}/bin:${PATH}
 ## 1.6のterminal日本語文字化けを防ぐ
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
