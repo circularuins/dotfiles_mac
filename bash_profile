@@ -33,3 +33,11 @@ alias ssh=~/.ssh/ssh-host-color # ssh接続先で色変更
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# java
+## javaのバージョンを切り替える
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+PATH=${JAVA_HOME}/bin:${PATH}
+## 1.6のterminal日本語文字化けを防ぐ
+alias javac='javac -J-Dfile.encoding=UTF-8'
+alias java='java -Dfile.encoding=UTF-8'
