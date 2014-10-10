@@ -40,3 +40,4 @@ export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Command
 PATH=${JAVA_HOME}/bin:${PATH}
 ## 1.6のterminal日本語文字化けを防ぐ
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+
