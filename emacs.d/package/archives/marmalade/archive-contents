@@ -1227,7 +1227,7 @@
 	[(1 4 1)
 	 nil "Lennart Staflin's Psgml package, with Elisp syntax and sgml-validate fixed for Emacsen >=24." tar])
  (psci .
-       [(0 0 5)
+       [(0 0 6)
 	((purescript-mode
 	  (13 10))
 	 (dash
@@ -3717,7 +3717,7 @@
        [(2 10 0)
 	nil "A modern list library for Emacs" single])
  (dart-mode .
-	    [(0 9)
+	    [(0 11)
 	     nil "Major mode for editing Dart files" single])
  (d-mode .
 	 [(2 0 4)

@@ -1,3 +1,6 @@
+;; GC時間短縮
+(setq gc-cons-threshold (* 128 1024 1024))
+
 ;; 遅延ロードマクロ定義
 ;; (lazyload (triger-function　...) "filename" &rest body)
 (defmacro lazyload (func lib &rest body)
