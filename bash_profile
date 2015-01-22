@@ -8,8 +8,8 @@ export PATH="/usr/local/bin:$PATH"
 source /usr/local/Library/Contributions/brew_bash_completion.sh # 補完を有効に
 
 # Emacs
-alias emacs="/usr/local/Cellar/emacs/24.3/bin/emacs -nw"
-export EDITOR=/usr/local/Cellar/emacs/24.3/bin/emacs
+alias emacs="/usr/local/Cellar/emacs/24.4/bin/emacs -nw"
+export EDITOR=/usr/local/Cellar/emacs/24.4/bin/emacs
 
 # plenv
 export PATH="$HOME/.plenv/bin:$PATH"
