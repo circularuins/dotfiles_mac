@@ -80,10 +80,6 @@
 ;;; 編集系の設定 ;;;
 ;;;;;;;;;;;;;;;;;;;;
 
-;;; 矩形編集 ;;;
-(cua-mode t)
-(setq cua-enable-cua-keys nil) ; CUAキーバインドを無効に
-
 ;;; grep系 ;;;
 
 ;; M-x grep 検索結果を編集可能に
@@ -147,10 +143,6 @@
 ;; wdiredで、ファイルのパーミションを編集可能にする
 ;; "C-x d"でwdired、"C-x C-q"で編集モード
 (setq wdired-allow-to-change-permissions t)
-
-;; ファイル名が重複していたらディレクトリ名を追加する。
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; 現在カーソル位置のファイル・URLを開く
 ;(ffap-bindings)

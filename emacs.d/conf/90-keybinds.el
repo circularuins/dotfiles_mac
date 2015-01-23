@@ -29,13 +29,6 @@
 ;;; ファイル
 (define-key global-map (kbd "C-x C-m") 'recentf-open-files)
 
-;;; cua-mode
-;; C-RETで開始、C-gで終了
-;; #連番入力の手順
-;; 矩形選択後、M-oでスペース1文字挿入
-;; M-n 後、初期値、加算値、フォーマットの順に入力
-(define-key global-map (kbd "C-x C-x") 'cua-set-rectangle-mark) ; ターミナルでデフォルトの"C-RET"が使えないので変更する
-
 ;;; シェル
 (define-key global-map (kbd "C-z") 'eshell)
 
