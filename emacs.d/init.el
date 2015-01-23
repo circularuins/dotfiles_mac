@@ -93,6 +93,9 @@
 (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
+;;; 24.4より、バイトコンパイル忘れても読みこむようになった ;;;
+(setq load-prefer-newer t)
+
 
 
 
