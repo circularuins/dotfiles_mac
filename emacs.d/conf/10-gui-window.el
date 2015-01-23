@@ -28,6 +28,8 @@
   (auto-image-file-mode t))
 
 ;; バッファ内での画像ファイルの表示 ;;;
+(turn-on-iimage-mode)
+(iimage-mode-buffer t)
 ; iimage-modeでホームディレクトリを展開
 (setq iimage-mode-image-filename-regex
      (concat "[-~+./_0-9a-zA-Z]+\\."
@@ -40,6 +42,3 @@
 (define-key iimage-mode-map "\C-l\C-l" 'iimage-recenter)
 ; 5秒何もしなければ再描画
 (run-with-idle-timer 5 5 (lambda () (and iimage-mode (iimage-recenter))))
-; テキストモードでiimage-modeをon(GUIのみ)
-(when window-system
-  (add-hook 'text-mode-hook 'turn-on-iimage-mode))

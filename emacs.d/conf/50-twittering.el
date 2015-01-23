@@ -7,6 +7,9 @@
        '(progn
           ,@body)) t))
 
+;; GUIでもGnuPGを読み込む
+(add-to-list 'exec-path "/usr/local/Cellar/gnupg/1.4.18_1/bin")
+
 (lazyload (twittering-mode)
           "twittering-mode"
           (require 'twittering-mode)
