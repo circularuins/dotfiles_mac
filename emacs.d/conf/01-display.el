@@ -21,7 +21,7 @@
 
 ;;; コードの階層に対応してカッコに色を付ける
 ; packageからインストール
-(global-rainbow-delimiters-mode t)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;; 1行ずつスクロール
 (setq scroll-step 1)
