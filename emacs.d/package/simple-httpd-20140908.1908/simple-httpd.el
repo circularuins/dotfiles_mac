@@ -4,7 +4,7 @@
 
 ;; Author: Christopher Wellons <wellons@nullprogram.com>
 ;; URL: https://github.com/skeeto/emacs-http-server
-;; Version: 20140519.848
+;; Version: 20140908.1908
 ;; X-Original-Version: 1.4.5
 ;; Package-Requires: ((cl-lib "0.3"))
 
@@ -143,7 +143,7 @@
 (defcustom httpd-host nil
   "Web server host name used by `make-network-process'."
   :group 'simple-httpd
-  :type 'symbol)
+  :type '(choice (const nil) (const local) string))
 
 (defcustom httpd-port 8080
   "Web server port."
@@ -296,6 +296,18 @@ instance per Emacs instance."
     (httpd-log `(stop ,(current-time-string)))
     (run-hooks 'httpd-stop-hook)))
 
+;;;###autoload
+(defun httpd-serve-directory (directory)
+  "Start the web server with given `directory' as `httpd-root'."
+  (interactive "DServe directory: \n")
+  (setf httpd-root directory)
+  (httpd-start)
+  (message "Started simple-httpd on %s:%d, serving: %s"
+           (cl-case httpd-host
+             ((nil) "0.0.0.0")
+             ((local) "localhost")
+             (otherwise httpd-host)) httpd-port directory))
+
 (defun httpd-batch-start ()
   "Never returns, holding the server open indefinitely for batch mode.
 Logs are redirected to stdout. To use, invoke Emacs like this:
@@ -328,7 +340,7 @@ emacs -Q -batch -l simple-httpd.elc -f httpd-batch-start"
 
 (defun httpd--filter (proc string)
   "Runs each time client makes a request."
-  (setq string (concat (process-get proc :previous-string) string))
+  (setf string (concat (process-get proc :previous-string) string))
   (let* ((request (httpd-parse string))
          (content-length (cadr (assoc "Content-Length" request)))
          (uri (cl-cadar request))
@@ -360,14 +372,14 @@ emacs -Q -batch -l simple-httpd.elc -f httpd-batch-start"
 (defun httpd-log (item)
   "Pretty print a lisp object to the log."
   (with-current-buffer (get-buffer-create "*httpd*")
-    (setq buffer-read-only nil)
+    (setf buffer-read-only nil)
     (let ((follow (= (point) (point-max))))
       (save-excursion
         (goto-char (point-max))
         (pp item (current-buffer)))
       (if follow (goto-char (point-max))))
-    (setq truncate-lines t)
-    (setq buffer-read-only t)
+    (setf truncate-lines t
+          buffer-read-only t)
     (set-buffer-modified-p nil)))
 
 ;; Servlets
@@ -555,7 +567,8 @@ actually serve up files."
 (defun httpd-unhex (str)
   "Fully decode the URL encoding in STR (including +'s)."
   (when str
-    (url-unhex-string (replace-regexp-in-string (regexp-quote "+") " " str) t)))
+    (let ((nonplussed (replace-regexp-in-string (regexp-quote "+") " " str)))
+      (decode-coding-string (url-unhex-string nonplussed t) 'utf-8))))
 
 (defun httpd-parse-args (argstr)
   "Parse a string containing URL encoded arguments."
@@ -724,7 +737,7 @@ the `httpd-current-proc' as the process."
         (size 0))
     (with-current-buffer (or buffer (current-buffer))
       (set-buffer-multibyte nil)
-      (setq size (buffer-size))
+      (setf size (buffer-size))
       (if orig (set-buffer-multibyte orig)))
     size))
 
