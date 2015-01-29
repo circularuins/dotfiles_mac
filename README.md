@@ -6,4 +6,5 @@ $ ln -s ~/dotfiles/bash_profile ~/.bash_profile
 $ ln -s ~/dotfiles/emacs.d ~/.emacs.d
 $ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 $ ln -s ~/dotfiles/tmuxinator ~/.tmuxinator
+$ ln -s ~/dotfiles/lein ~/.lein
 ```
