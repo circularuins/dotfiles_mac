@@ -153,7 +153,10 @@
                   (package-install pkg-desc))
                  (t
                   ;; Delete.
-                  (package-delete pkg-desc)))))
+                  (if (boundp 'package-selected-packages)
+                      (with-no-warnings
+                        (package-delete pkg-desc t t))
+                      (package-delete pkg-desc))))))
 
 (defun helm-el-package-upgrade (_candidate)
   (helm-el-package-upgrade-1
@@ -185,7 +188,7 @@
            for upgrade-p = (assq name helm-el-package--upgrades)
            for user-installed-p = (and (boundp 'package-selected-packages)
                                        (memq name package-selected-packages))
-           do (when user-installed-p (put-text-property 0 2 'display "I " c))
+           do (when user-installed-p (put-text-property 0 2 'display "S " c))
            for cand = (cons c (car (split-string c)))
            when (or (and upgrade-p
                          (eq helm-el-package--show-only 'upgrade))
