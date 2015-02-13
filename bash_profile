@@ -43,3 +43,6 @@ PATH=${JAVA_HOME}/bin:${PATH}
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 ## AndroidSDKの場所
 export PATH="$PATH:/Users/wake/sdk/platform-tools"
+
+# git
+source ~/dotfiles/git-completion.bash
