@@ -65,12 +65,16 @@ here a default command example for ack-grep:
 \(setq helm-grep-default-command \"ack-grep -Hn --no-group --no-color %e %p %f\"
        helm-grep-default-recurse-command \"ack-grep -H --no-group --no-color %e %p %f\")
 
-NOTE: Helm for ack-grep support ANSI sequences, so you can remove
-the \"--no-color\" option safely (recommended).
-On the other hand If you add \"--color=always\" expect errors, it is not supported yet.
- 
 You can ommit the %e spec if you don't want to be prompted for types.
 
+NOTE: Helm for ack-grep support ANSI sequences, so you can remove
+the \"--no-color\" option safely (recommended).
+
+To enable ANSI in grep it is a little more difficult:
+    1) Modify env var
+      \(setenv \"GREP_COLORS\" \"ms=01;31:mc=01;31:sl=01;37:cx=:fn=35:ln=32:bn=32:se=36\")
+    2) Add the option \"--color=always\".
+ 
 `helm-grep-default-command' and `helm-grep-default-recurse-command'are
 independents, so you can enable `helm-grep-default-command' with ack-grep
 and `helm-grep-default-recurse-command' with grep if you want to be faster
@@ -92,13 +96,18 @@ See `helm-grep-default-command' for format specs and infos about ack-grep."
 (defcustom helm-default-zgrep-command
   "zgrep -a -n%cH -e %p %f"
   "Default command for Zgrep.
-See `helm-grep-default-command' for infos on format specs."
+See `helm-grep-default-command' for infos on format specs.
+Option --color=always is supported and can be used safely
+to replace the helm internal match highlighting,
+see `helm-grep-default-command' for more infos."
   :group 'helm-grep
   :type  'string)
 
 (defcustom helm-pdfgrep-default-command
   "pdfgrep --color never -niH %s %s"
-  "Default command for pdfgrep."
+  "Default command for pdfgrep.
+Option --color always is not supported, expect
+errors when executing actions."
   :group 'helm-grep
   :type  'string)
 
@@ -452,7 +461,7 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
 (defun helm-grep-action (candidate &optional where mark)
   "Define a default action for `helm-do-grep' on CANDIDATE.
 WHERE can be one of other-window, elscreen, other-frame."
-  (let* ((split        (helm-grep-split-line (ansi-color-apply candidate)))
+  (let* ((split        (helm-grep-split-line candidate))
          (lineno       (string-to-number (nth 1 split)))
          (loc-fname        (or (with-current-buffer
                                    (if (eq major-mode 'helm-grep-mode)
@@ -947,7 +956,9 @@ in recurse, search being made on `helm-zgrep-file-extension-regexp'."
 (defun helm-grep--filter-candidate-1 (candidate &optional dir)
   (let* ((root   (or dir (and helm-grep-default-directory-fn
                               (funcall helm-grep-default-directory-fn))))
-         (split  (helm-grep-split-line (ansi-color-apply candidate)))
+         (ansi-p (string-match-p ansi-color-regexp candidate))
+         (line   (if ansi-p (ansi-color-apply candidate) candidate))
+         (split  (helm-grep-split-line line))
          (fname  (if (and root split)
                      (expand-file-name (car split) root)
                    (car-safe split)))
@@ -960,8 +971,8 @@ in recurse, search being made on `helm-zgrep-file-extension-regexp'."
                     ":"
                     (propertize lineno 'face 'helm-grep-lineno)
                     ":"
-                    (if ansi-color-context str (helm-grep-highlight-match str)))
-            candidate))))
+                    (if ansi-p str (helm-grep-highlight-match str)))
+            line))))
 
 (defun helm-grep-filter-one-by-one (candidate)
   "`filter-one-by-one' transformer function for `helm-do-grep'."
