@@ -124,14 +124,14 @@
           'executable-make-buffer-file-executable-if-script-p)
 
 ;; 最近使ったファイルを開く
-(when (require 'recentf nil t)
-  (setq recentf-max-saved-items 2000)
-  (setq recentf-exclude '(".recentf" "/TAGS$" "/var/tmp/" "Map_Sym.txt"))
-  (setq recentf-auto-cleanup 10)
-  (setq recentf-auto-save-timer
-        (run-with-idle-timer 30 t 'recentf-save-list))
-  (recentf-mode 1)
-  (require 'recentf-ext))
+;; (when (require 'recentf nil t)
+;;   (setq recentf-max-saved-items 2000)
+;;   (setq recentf-exclude '(".recentf" "/TAGS$" "/var/tmp/" "Map_Sym.txt"))
+;;   (setq recentf-auto-cleanup 10)
+;;   (setq recentf-auto-save-timer
+;;         (run-with-idle-timer 30 t 'recentf-save-list))
+;;   (recentf-mode 1)
+;;   (require 'recentf-ext))
 
 ;; diredを便利にする
 (require 'dired-x)
