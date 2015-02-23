@@ -26,9 +26,6 @@
 ;;; バッファ
 (global-set-key "\C-x\C-b" 'bs-show)
 
-;;; ファイル
-(define-key global-map (kbd "C-x C-m") 'recentf-open-files)
-
 ;;; シェル
 (define-key global-map (kbd "C-z") 'eshell)
 
