@@ -43,6 +43,12 @@
 (global-set-key (kbd "C-c u") 'paredit-splice-sexp-killing-backward) ; カーソル前の要素と外側の()を消す
 
 
+;;;;;;;;;;;
+;;; git ;;;
+;;;;;;;;;;;
+(global-set-key (kbd "C-x v d") 'magit-status)
+
+
 ;;;;;;;;;;;;;;;;;;;
 ;;;anything/helm;;;
 ;;;;;;;;;;;;;;;;;;;

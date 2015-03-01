@@ -13,5 +13,6 @@
       (push '("*Compile-Log*" :height 10 :position bottom :noselect t) popwin:special-display-config)
       (push '("*VC-log*" :height 10 :position bottom) popwin:special-display-config)
       (push '("*anything kill-ring*" :height 14) popwin:special-display-config)
+      (push '("*magit" :regexp t :height 30) popwin:special-display-config)
 ;      (push '("*ruby*" :height 14) popwin:special-display-config)
       ))
