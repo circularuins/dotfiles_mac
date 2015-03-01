@@ -19,5 +19,7 @@
 (add-to-list 'ac-modes 'yaml-mode)
 (add-to-list 'ac-modes 'web-mode)
 (add-to-list 'ac-modes 'eshell-mode)
+(add-to-list 'ac-modes 'haml-mode)
+
 ;; ac-mode
 ;(autoload 'ac-mode "ac-mode" "Minor mode for advanced completion." t nil)
