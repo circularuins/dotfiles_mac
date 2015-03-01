@@ -12,3 +12,4 @@
 (add-hook 'cider-repl-mode-hook 'smartparens-mode)
 (add-hook 'js2-mode-hook 'smartparens-mode)
 (add-hook 'java-mode-hook 'smartparens-mode)
+(add-hook 'eshell-mode-hook 'smartparens-mode)
