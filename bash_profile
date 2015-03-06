@@ -46,3 +46,6 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 # git
 source ~/dotfiles/git-completion.bash
+
+# コンソールのユーザー名のところに現在のディレクトリ名を表示する
+export PS1="\W $ "
