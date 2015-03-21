@@ -10,16 +10,30 @@
 ;; ac-modeに各モードを追加する
 (add-to-list 'ac-modes 'lisp-mode)
 (add-to-list 'ac-modes 'slime-repl-mode)
-(add-to-list 'ac-modes 'html-mode)
 (add-to-list 'ac-modes 'js2-mode)
 (add-to-list 'ac-modes 'scheme-mode)
 (add-to-list 'ac-modes 'inferior-scheme-mode)
 (add-to-list 'ac-modes 'inferior-lisp-mode)
 (add-to-list 'ac-modes 'clojure-mode)
 (add-to-list 'ac-modes 'yaml-mode)
-(add-to-list 'ac-modes 'web-mode)
 (add-to-list 'ac-modes 'eshell-mode)
-(add-to-list 'ac-modes 'haml-mode)
 
 ;; ac-mode
 ;(autoload 'ac-mode "ac-mode" "Minor mode for advanced completion." t nil)
+
+;; ac-html
+(setq web-mode-ac-sources-alist
+  '(("html" . (ac-source-emmet-html-aliases ac-source-emmet-html-snippets))
+    ("css" . (ac-source-css-property ac-source-emmet-css-snippets))))
+(add-hook 'web-mode-before-auto-complete-hooks
+          '(lambda ()
+             (let ((web-mode-cur-language
+                    (web-mode-language-at-pos)))
+               (if (string= web-mode-cur-language "css")
+                   (setq emmet-use-css-transform t)
+                 (setq emmet-use-css-transform nil)))))
+(add-to-list 'web-mode-ac-sources-alist
+             '("html" . (ac-source-html-attribute-value
+                         ac-source-html-tag
+                         ac-source-html-attribute)))
+(add-hook 'haml-mode-hook 'ac-haml-enable)
