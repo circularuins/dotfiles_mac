@@ -60,8 +60,6 @@ installations instructions and a quick tutorial, *note Installation::
 and *note Quickstart:: respectively.  *Note Usage::, for a detailed user
 guide.
 
-   For more information about Flymake, *note Overview: (flymake)Top.
-
 * Menu:
 
 * Introduction::                An introduction to Flycheck
@@ -69,7 +67,7 @@ guide.
 * Quickstart::                  A quick Flycheck tutorial
 * Usage::                       How to use Flycheck
 * Syntax checker definitions::  How to add new syntax checkers to Flycheck
-* Flycheck hooks::              How to hook into Flycheckx
+* Flycheck hooks::              How to hook into Flycheck
 * Flycheck API::                API documentation
 * Supported languages::         A list of supported languages
 * Issues::                      How to report issues in Flycheck
@@ -2791,87 +2789,87 @@ Function and variable index
 
 Tag Table:
 Node: Top1137
-Node: Introduction3429
-Node: Installation4522
-Node: Quickstart6810
-Node: Usage9346
-Node: Checking buffers10346
-Node: Syntax checkers13170
-Node: Reporting results18569
-Node: Navigating errors20888
-Node: Displaying errors23444
-Node: Killing errors24853
-Node: Listing errors25640
-Node: Mode line display27192
-Node: Configuring checkers28505
-Ref: Syntax checker options29221
-Ref: Syntax checker configuration files30239
-Ref: Syntax checker executables33126
-Node: Syntax checker definitions34330
-Node: Defining syntax checkers35511
-Node: Finding error patterns39730
-Node: Trying new checkers41077
-Node: Registering new checkers41762
-Node: Parsing structured output43310
-Node: Passing configuration to checkers44553
-Node: Controlling use of checkers48157
-Node: Applying multiple checkers49259
-Node: Flycheck hooks52512
-Node: Flycheck API54151
-Node: Command syntax checkers54489
-Node: Argument Substitution54859
-Node: Checker configuration55029
-Node: Error parsers55241
-Node: Errors55387
-Node: Supported languages55499
-Ref: language-Ada56708
-Ref: language-AsciiDoc57332
-Ref: language-C/C++57415
-Ref: language-CFEngine59869
-Ref: language-Chef59937
-Ref: language-Coffeescript60182
-Ref: language-Coq60582
-Ref: language-CSS60638
-Ref: language-D60748
-Ref: language-Elixir61106
-Ref: language-Emacs Lisp61197
-Ref: language-Erlang62325
-Ref: language-ERuby62393
-Ref: language-Fortran62488
-Ref: language-Go63381
-Ref: language-Haml64131
-Ref: language-Handlebars64200
-Ref: language-Haskell64282
-Ref: language-HTML65522
-Ref: language-Javascript65831
-Ref: language-JSON66797
-Ref: language-Less66883
-Ref: language-Lua66940
-Ref: language-Perl67298
-Ref: language-PHP67718
-Ref: language-Puppet68410
-Ref: language-Python68592
-Ref: language-R69876
-Ref: language-Racket70313
-Ref: language-RPM Spec70388
-Ref: language-reStructuredText70502
-Ref: language-Ruby70891
-Ref: language-Rust71902
-Ref: language-Sass72734
-Ref: language-Scala72987
-Ref: language-SCSS73594
-Ref: language-Shell scripting languages74154
-Ref: language-Slim74890
-Ref: language-TeX/LaTeX74967
-Ref: language-Texinfo75379
-Ref: language-Verilog75474
-Ref: language-XML75579
-Ref: language-YAML75747
-Node: Issues75886
-Node: GNU Free Documentation License76907
-Node: Main Index102254
-Node: Key Index110379
-Node: Function and Variable Index111887
+Node: Introduction3358
+Node: Installation4451
+Node: Quickstart6739
+Node: Usage9275
+Node: Checking buffers10275
+Node: Syntax checkers13099
+Node: Reporting results18498
+Node: Navigating errors20817
+Node: Displaying errors23373
+Node: Killing errors24782
+Node: Listing errors25569
+Node: Mode line display27121
+Node: Configuring checkers28434
+Ref: Syntax checker options29150
+Ref: Syntax checker configuration files30168
+Ref: Syntax checker executables33055
+Node: Syntax checker definitions34259
+Node: Defining syntax checkers35440
+Node: Finding error patterns39659
+Node: Trying new checkers41006
+Node: Registering new checkers41691
+Node: Parsing structured output43239
+Node: Passing configuration to checkers44482
+Node: Controlling use of checkers48086
+Node: Applying multiple checkers49188
+Node: Flycheck hooks52441
+Node: Flycheck API54080
+Node: Command syntax checkers54418
+Node: Argument Substitution54788
+Node: Checker configuration54958
+Node: Error parsers55170
+Node: Errors55316
+Node: Supported languages55428
+Ref: language-Ada56637
+Ref: language-AsciiDoc57261
+Ref: language-C/C++57344
+Ref: language-CFEngine59798
+Ref: language-Chef59866
+Ref: language-Coffeescript60111
+Ref: language-Coq60511
+Ref: language-CSS60567
+Ref: language-D60677
+Ref: language-Elixir61035
+Ref: language-Emacs Lisp61126
+Ref: language-Erlang62254
+Ref: language-ERuby62322
+Ref: language-Fortran62417
+Ref: language-Go63310
+Ref: language-Haml64060
+Ref: language-Handlebars64129
+Ref: language-Haskell64211
+Ref: language-HTML65451
+Ref: language-Javascript65760
+Ref: language-JSON66726
+Ref: language-Less66812
+Ref: language-Lua66869
+Ref: language-Perl67227
+Ref: language-PHP67647
+Ref: language-Puppet68339
+Ref: language-Python68521
+Ref: language-R69805
+Ref: language-Racket70242
+Ref: language-RPM Spec70317
+Ref: language-reStructuredText70431
+Ref: language-Ruby70820
+Ref: language-Rust71831
+Ref: language-Sass72663
+Ref: language-Scala72916
+Ref: language-SCSS73523
+Ref: language-Shell scripting languages74083
+Ref: language-Slim74819
+Ref: language-TeX/LaTeX74896
+Ref: language-Texinfo75308
+Ref: language-Verilog75403
+Ref: language-XML75508
+Ref: language-YAML75676
+Node: Issues75815
+Node: GNU Free Documentation License76836
+Node: Main Index102183
+Node: Key Index110308
+Node: Function and Variable Index111816
 
 End Tag Table
 
