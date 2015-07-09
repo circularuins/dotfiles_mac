@@ -12,4 +12,3 @@
 (require 'lispxmp)
 ;; emacs-lisp-modeでC-c C-dを押すと注釈される
 (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
-(add-to-list 'ac-modes 'emacs-lisp-mode)
