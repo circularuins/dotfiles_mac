@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "helm-swoop" "helm-swoop.el" (21939 11810 0
-;;;;;;  0))
-;;; Generated autoloads from helm-swoop.el
+;;;### (autoloads nil "helm-swoop" "../../../../.emacs.d/package/helm-swoop-20150704.839/helm-swoop.el"
+;;;;;;  "8711c5be1d311acdbf6a9870eb9466fc")
+;;; Generated autoloads from ../../../../.emacs.d/package/helm-swoop-20150704.839/helm-swoop.el
 
 (autoload 'helm-swoop-back-to-last-point "helm-swoop" "\
 Go back to last position where `helm-swoop' was called
@@ -58,8 +58,9 @@ Applies all buffers of the same mode as the current buffer to helm-multi-swoop
 
 ;;;***
 
-;;;### (autoloads nil nil ("helm-swoop-pkg.el") (21939 11810 21147
-;;;;;;  0))
+;;;### (autoloads nil nil ("../../../../.emacs.d/package/helm-swoop-20150704.839/helm-swoop-autoloads.el"
+;;;;;;  "../../../../.emacs.d/package/helm-swoop-20150704.839/helm-swoop.el")
+;;;;;;  (21965 45545 797625 0))
 
 ;;;***
 
