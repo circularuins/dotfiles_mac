@@ -1,6 +1,6 @@
 (when (and (executable-find "cmigemo")
            (require 'migemo nil t))
-  (setq migemo-command "cmigemo")
+  (setq migemo-command "/usr/local/bin/cmigemo")
   (setq migemo-options '("-q" "--emacs"))
 
   ;; Set your installed path
