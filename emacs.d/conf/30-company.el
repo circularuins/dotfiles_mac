@@ -1,6 +1,7 @@
 (global-company-mode +1)
 (custom-set-variables
- '(company-global-modes '(not eshell-mode)))
+ '(company-global-modes '(not eshell-mode))
+ '(company-global-modes '(not js2-mode)))
 
 (setq company-idle-delay 0) ; デフォルトは0.5
 (setq company-minimum-prefix-length 2) ; デフォルトは4
