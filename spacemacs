@@ -33,7 +33,6 @@ values."
      syntax-checking
      version-control
      ruby
-     java
      clojure
      scheme
      common-lisp
@@ -364,6 +363,9 @@ you should place your code here."
   ;; M-u(upcase),M-l(downcase),M-c(capitalize)が、カーソル直前の単語に効くようになる。連打すると、前方の単語を順次変換
   (require 'sequential-command-config)
   (sequential-command-setup-keys)
+
+  ;; 補完の設定　company-mode
+  (global-company-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
