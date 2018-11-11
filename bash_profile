@@ -46,6 +46,7 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 # go
 export GOPATH=$HOME/project/go
+export PATH=$PATH:$GOPATH/bin
 
 # git
 source ~/dotfiles/git-completion.bash
