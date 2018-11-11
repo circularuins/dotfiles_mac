@@ -44,6 +44,9 @@ export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 ## AndroidSDKの場所
 export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
+# go
+export GOPATH=$HOME/project/go
+
 # git
 source ~/dotfiles/git-completion.bash
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
